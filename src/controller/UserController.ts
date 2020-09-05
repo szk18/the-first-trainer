@@ -1,7 +1,9 @@
 import {
   Body,
+  BodyParam,
   Controller,
   Get,
+  HeaderParam,
   JsonController,
   Param,
   Post,
@@ -11,15 +13,15 @@ import {
 @JsonController("/user")
 export class UserController {
   @Post("/create")
-  post(@Body() name: string) {
-    return "create user and return token";
+  post(@BodyParam("name") name: string) {
+    return `create user(name:${name}) and return token`;
   }
   @Get("/get")
-  getOne() {
-    return "this action returns user";
+  getOne(@HeaderParam("x-token") token: string) {
+    return `return one user(token:${token})`;
   }
   @Put("/update")
-  put(@Body() name: string) {
-    return "update user info";
+  put(@BodyParam("name") name: string, @HeaderParam("x-token") token: string) {
+    return `update user(name:${name} token:${token})`;
   }
 }

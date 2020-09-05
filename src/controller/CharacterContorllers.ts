@@ -1,9 +1,9 @@
-import { Get, JsonController } from "routing-controllers";
+import { Get, HeaderParam, JsonController } from "routing-controllers";
 
 @JsonController("/character")
 export class CharacterController {
   @Get("/list")
-  getAll() {
-    return "return all characters";
+  getAll(@HeaderParam("x-token") token: string) {
+    return `return all characters. token: ${token}`;
   }
 }
