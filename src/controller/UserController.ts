@@ -1,9 +1,25 @@
-import { Controller, Get } from "routing-controllers";
+import {
+  Body,
+  Controller,
+  Get,
+  JsonController,
+  Param,
+  Post,
+  Put,
+} from "routing-controllers";
 
-@Controller()
+@JsonController("/user")
 export class UserController {
-  @Get("/users")
-  getAll() {
-    return "this action returns all users";
+  @Post("/create")
+  post(@Body() name: string) {
+    return "create user and return token";
+  }
+  @Get("/get")
+  getOne() {
+    return "this action returns user";
+  }
+  @Put("/update")
+  put(@Body() name: string) {
+    return "update user info";
   }
 }
