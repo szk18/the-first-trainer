@@ -9,8 +9,6 @@ import {
   Post,
   Put,
 } from "routing-controllers";
-import { Inject } from "typedi";
-import { User } from "../entity/User";
 import { UserService } from "../service/UserService";
 import "reflect-metadata";
 
@@ -19,18 +17,20 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Post("/create")
-  public async post(@BodyParam("name") name: string) {
-    const token = "sample token";
-    const user = new User(name, token);
-    await this.userService.insertUser(user);
-    return { token };
+  async post(@BodyParam("name") name: string) {
+    return this.userService.insertUser(name);
   }
+
   @Get("/get")
-  getOne(@HeaderParam("x-token") token: string) {
-    return `return one user(token:${token})`;
+  async getOne(@HeaderParam("x-token") token: string) {
+    return await this.userService.getUser(token);
   }
+
   @Put("/update")
-  put(@BodyParam("name") name: string, @HeaderParam("x-token") token: string) {
-    return `update user(name:${name} token:${token})`;
+  async put(
+    @BodyParam("name") newName: string,
+    @HeaderParam("x-token") token: string
+  ) {
+    return this.userService.updateUser(newName, token);
   }
 }
