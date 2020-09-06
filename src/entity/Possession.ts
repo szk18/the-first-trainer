@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Posseiion {
+export class Possession {
   @PrimaryGeneratedColumn()
   readonly id?: number;
 
