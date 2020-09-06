@@ -1,11 +1,8 @@
 import {
-  Body,
   BodyParam,
-  Controller,
   Get,
   HeaderParam,
   JsonController,
-  Param,
   Post,
   Put,
 } from "routing-controllers";

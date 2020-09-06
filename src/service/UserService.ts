@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Service } from "typedi";
-import { Connection, getConnection, Repository } from "typeorm";
+import { getConnection } from "typeorm";
 import { v1 as uuidv1 } from "uuid";
 import { User } from "../entity/User";
 

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import express from "express";
-import { Container, Inject } from "typedi";
+import { Container } from "typedi";
 import { createConnection } from "typeorm";
 import { useContainer as typeormUseContainer } from "typeorm";
 import {

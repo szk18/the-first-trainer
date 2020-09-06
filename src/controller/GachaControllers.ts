@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import {
-  Body,
   BodyParam,
   HeaderParam,
   JsonController,
