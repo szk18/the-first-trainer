@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { Get, HeaderParam, JsonController } from "routing-controllers";
 
 @JsonController("/character")

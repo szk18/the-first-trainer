@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {
   Body,
   BodyParam,
@@ -5,14 +6,17 @@ import {
   JsonController,
   Post,
 } from "routing-controllers";
+import { GachaService } from "../service/GachaService";
 
 @JsonController("/gacha")
 export class GachaController {
+  constructor(private gachaService: GachaService) {}
+
   @Post("/draw")
-  post(
+  async post(
     @BodyParam("times") times: number,
     @HeaderParam("x-token") token: string
   ) {
-    return `return gacha ${times} times. token: ${token}`;
+    return await this.gachaService.draw(times, token);
   }
 }
